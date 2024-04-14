@@ -11,6 +11,7 @@ const LinkChangesGrid = ({ linkId }) => {
       try {
         const response = await axios.get(`http://localhost:8081/links-api/${linkId}/history`);
         setHistory(response.data);
+        console.log(response)
       } catch (error) {
         console.error('Error fetching link history:', error);
       }
@@ -19,12 +20,13 @@ const LinkChangesGrid = ({ linkId }) => {
     fetchHistory();
   }, [linkId]);
 
+
   return (
     <table className="table">
       <thead>
         <tr>
-          <th scope="col">Revision #</th>
-          <th scope="col">Type</th>
+
+          <th scope="col">Revision Type</th>
           <th scope="col">Date</th>
           <th scope="col">Name</th>
           <th scope="col">URL</th>
@@ -38,7 +40,7 @@ const LinkChangesGrid = ({ linkId }) => {
       </thead>
       <tbody>
         {history.map((item, index) => (
-          <tr key={index}>
+          <tr key={item.revisionDate}>
             <th scope="row">{item.revisionType}</th>
             <td>{item.revisionDate}</td>
             <td>{item.name}</td>

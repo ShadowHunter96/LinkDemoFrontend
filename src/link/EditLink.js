@@ -161,7 +161,7 @@ const EditLink = () => {
                     </form>
                 </div>
             </div>
-            <LinkChangesGrid/>
+            <LinkChangesGrid linkId={id}/>
         </div>
         
     );

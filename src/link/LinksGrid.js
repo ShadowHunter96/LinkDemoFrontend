@@ -43,7 +43,7 @@ const LinksGrid = () => {
         <table className="table border shadow">
           <thead>
             <tr>
-              <th scope="col">#</th>
+              <th scope="col">id</th>
               <th scope="col">Name</th>
               <th scope="col">URL</th>
               <th scope="col">Actions</th>
@@ -52,7 +52,7 @@ const LinksGrid = () => {
           <tbody>
             {links.map((link, index) => (
               <tr key={index}>
-                <th scope="row">{index + 1}</th>
+                <td>{link.id}</td>
                 <td>{link.name}</td>
                 <td>{link.url}</td>
                 <td>
