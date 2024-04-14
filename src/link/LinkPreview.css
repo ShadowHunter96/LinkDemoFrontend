@@ -1,0 +1,34 @@
+.card {
+    width: 350px;
+    height: 600px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .card-image-container {
+    height: 70%; 
+    width: 100%;
+  }
+  
+  .card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+  
+  .card-content {
+    height: 30%;
+    overflow: hidden;
+    padding: 10px;
+  }
+  
+  .clickable-card {
+    cursor: pointer;
+    transition: transform 0.2s ease; 
+  }
+  
+  .clickable-card:hover {
+    transform: scale(1.10); 
+  }
