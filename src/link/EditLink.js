@@ -16,7 +16,7 @@ const EditLink = () => {
         description: '',
         availableInFirefox: false,
         availableInChrome: false,
-        isActive: true,
+        active: true,
         openInNewWindow: false
     });
 
@@ -29,6 +29,8 @@ const EditLink = () => {
     const onInputChange = (e) => {
         const value = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
         setLink({ ...link, [e.target.name]: value });
+        console.log('Sending these values:', { ...link });
+
     };
 
     const onFileChange = (e) => {
@@ -36,7 +38,7 @@ const EditLink = () => {
     };
 
     useEffect(() => {
-        
+        console.log('link active = ' + link.active);
             loadLink(id);
     }, [id]);
 
@@ -62,8 +64,7 @@ const EditLink = () => {
         formData.append('description', description);
         formData.append('availableInFirefox', link.availableInFirefox);
         formData.append('availableInChrome', link.availableInChrome);
-        formData.append('isActive', link.isActive ?? 'false');
-        formData.append('isActive', link.isActive);
+        formData.append('active', link.active ?? 'false');
         formData.append('openInNewWindow', link.openInNewWindow);
 
         if (file) {
@@ -117,7 +118,7 @@ const EditLink = () => {
                             <label className="form-check-label" htmlFor="availableInChrome">Available in Chrome</label>
                         </div>
                         <div className="mb-3 form-check">
-                            <input type="checkbox" className="form-check-input" name="isActive" checked={link.isActive} onChange={onInputChange} />
+                            <input type="checkbox" className="form-check-input" name="active" checked={link.active} onChange={onInputChange} />
                             <label className="form-check-label" htmlFor="active">Is Active</label>
                         </div>
                         <div className="mb-3 form-check">

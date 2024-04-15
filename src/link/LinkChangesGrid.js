@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import HTMLReactParser from 'html-react-parser/lib/index';
 
 
 const LinkChangesGrid = ({ linkId }) => {
@@ -45,7 +46,7 @@ const LinkChangesGrid = ({ linkId }) => {
             <td>{item.revisionDate}</td>
             <td>{item.name}</td>
             <td>{item.url}</td>
-            <td>{item.description}</td>
+            <td>{ HTMLReactParser(item.description) }</td>
             <td>{item.availableInFirefox ? 'Yes' : 'No'}</td>
             <td>{item.availableInChrome ? 'Yes' : 'No'}</td>
             <td>{item.isActive ? 'Yes' : 'No'}</td>
