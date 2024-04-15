@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { Link, useNavigate,} from 'react-router-dom';
+import { Link, useNavigate, } from 'react-router-dom';
 import axios from 'axios';
 import JoditEditor from 'jodit-react';
 
@@ -16,28 +16,33 @@ const AddNewLink = () => {
         availableInChrome: false,
         isActive: true,
         openInNewWindow: false,
-        deleted:false
+        deleted: false
     });
 
     const editor = useRef(null);
 
     const [file, setFile] = useState(null);
-    const [description, setDescription] = useState('');
 
 
     const onInputChange = (e) => {
         const value = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
         setLink({ ...link, [e.target.name]: value });
+
     };
 
     const onFileChange = (e) => {
         setFile(e.target.files[0]);
     };
 
+    const onEditorChange = (newDescription) => {
+        setLink(prevLink => ({ ...prevLink, description: newDescription }));
+    };
 
-    
+
+
 
     const onSubmit = async (e) => {
+        console.log(link)
         e.preventDefault();
 
         if (!link.name || !link.url || !link.description) {
@@ -49,7 +54,7 @@ const AddNewLink = () => {
         Object.entries(link).forEach(([key, value]) =>
             formData.append(key, value)
         );
-        
+
         if (file) {
             formData.append('image', file);
         }
@@ -110,9 +115,10 @@ const AddNewLink = () => {
 
                             <JoditEditor
                                 ref={editor}
-                                value={link.description}
-                                onChange={(newDescription) => setDescription(newDescription)}
+                                value={link.description} // Použijte description z link objektu
+                                onChange={onEditorChange} // Aktualizujte stav pomocí této funkce
                             />
+
                         </div>
                         <button type="submit" className="btn btn-outline-primary">
                             Submit
