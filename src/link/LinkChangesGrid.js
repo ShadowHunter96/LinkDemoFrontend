@@ -49,7 +49,7 @@ const LinkChangesGrid = ({ linkId }) => {
             <td>{ HTMLReactParser(item.description) }</td>
             <td>{item.availableInFirefox ? 'Yes' : 'No'}</td>
             <td>{item.availableInChrome ? 'Yes' : 'No'}</td>
-            <td>{item.isActive ? 'Yes' : 'No'}</td>
+            <td>{item.active ? 'Yes' : 'No'}</td>
             <td>{item.openInNewWindow ? 'Yes' : 'No'}</td>
             <td>{item.deleted ? 'Yes' : 'No'}</td>
           </tr>
