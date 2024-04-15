@@ -83,7 +83,7 @@ const EditLink = () => {
     };
 
     const deleteLink = async (linkId) => {
-        const isConfirmed = await confirm('Are you sure you want to delete this link?', 'Yes', 'No');
+        const isConfirmed = await confirm('Really want to delete this link?', 'Yes', 'No');
         if (isConfirmed) {
           try {
             await axios.delete(`http://localhost:8081/links-api/delete/${linkId}`);
